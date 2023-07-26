@@ -13,6 +13,14 @@ body {
 
 }
 
+.jokes-title {
+  margin-bottom: 10px;
+  position: relative; /* Add positioning to contain the cursor */
+  background: linear-gradient(54deg, #f0f, #0ff); /* Apply the gradient to the background */
+  -webkit-background-clip: text; /* Apply the gradient as text color (for browser compatibility) */
+  color: transparent; /* Make the text transparent to show the gradient */
+}
+
 .jokes-background {
   position: relative;
   display: flex;
