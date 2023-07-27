@@ -29,6 +29,5 @@ This command will start a development server, and your application will be acces
 
 6. Use the application:
    Now, you can open your web browser and go to `http://localhost:3000` to see the running React application.
-
-# International-Jokes
-approach and Challenges faced: 
+   
+# approach and Challenges faced: 
