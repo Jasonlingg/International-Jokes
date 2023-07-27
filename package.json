@@ -3,5 +3,8 @@
     "axios": "^1.4.0",
     "i18next": "^23.2.11",
     "react-i18next": "^13.0.2"
+  },
+  "devDependencies": {
+    "gh-pages": "^5.0.0"
   }
 }
