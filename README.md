@@ -30,4 +30,13 @@ This command will start a development server, and your application will be acces
 6. Use the application:
    Now, you can open your web browser and go to `http://localhost:3000` to see the running React application.
    
-# approach and Challenges faced: 
+# Approach and Challenges faced: 
+
+My approach to this project in general:
+1. Get the jokes API working; needed to get the jokes from the API and also the different categories of jokes that the user can choose from. Put that into a dropdown menu
+2. Set up basic UI for the app to get a general feeling of what the app should look like
+3. Use LibreTranslate to translate the joke
+4. Do some testing and error handling
+
+Challenges faced: 
+Big challenge with a few parts:
