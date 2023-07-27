@@ -1,15 +1,25 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-
+import Translate from './Translate'; // Import the Translate component
 import './App.css';
 
+/**
+ * JokesContent Component
+ * A component to display jokes and allow translation of jokes to different languages.
+ */
 function JokesContent() {
   const [title, setTitle] = useState('');
-  const titleText = "Joke Generator"; // The text you want to show with typing effect
-  const typingSpeed = 100; // Speed of typing in milliseconds
+  const titleText = "Joke Generator";
+  const typingSpeed = 100;
+  const [translatedJoke, setTranslatedJoke] = useState('');
 
+  // Callback function to handle the translated joke from the Translate component
+  const handleTranslatedJoke = (translatedJoke) => {
+    setTranslatedJoke(translatedJoke);
+  };
+
+  // Simulate typing effect on the title using useEffect
   useEffect(() => {
-    // Simulate typing effect on the title
     let currentIndex = 0;
     const interval = setInterval(() => {
       if (currentIndex <= titleText.length) {
@@ -22,6 +32,8 @@ function JokesContent() {
 
     return () => clearInterval(interval);
   }, []);
+
+  // Function to fetch jokes from the API based on the selected category
   const fetchJokes = async (selectedCategory) => {
     try {
       const response = await axios.get(`https://v2.jokeapi.dev/joke/${selectedCategory}?type=single`);
@@ -34,45 +46,52 @@ function JokesContent() {
 
   const [joke, setJoke] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('Any');
-
   const categories = ['Any', 'Misc', 'Programming', 'Dark', 'Pun'];
 
-  useEffect(() => {
-    fetchNewJoke();
-  }, []);
-
+  // Event handler for changing the selected category
   const handleCategoryChange = (event) => {
     setSelectedCategory(event.target.value);
   };
 
+  // Function to fetch a new joke and update the state
   const fetchNewJoke = async () => {
     const newJoke = await fetchJokes(selectedCategory);
     if (newJoke) {
       setJoke(newJoke);
+      // Trigger translation for the new joke
+      setTranslatedJoke('');
     }
   };
 
+  const buttonText = "Generate Joke";
 
   return (
     <div className="jokes-background">
       <div className="jokes-container">
-      <div className='laugh'>&#128514;</div>
-        <h1 className="jokes-title">{title}<span className="cursor"></span></h1>
-        <div>
-          <p>Select</p>
-        <select className="jokes-select" value={selectedCategory} onChange={handleCategoryChange}>
-          {categories.map((category) => (
-            <option key={category} value={category}>
-              {category}
-            </option>
-          ))}
-        </select>
+        {/* Emoji representing laughter */}
+        <div className='laugh'>&#128514;</div>
+        {/* Display the title with the typing effect */}
+        <h1 className="jokes-title">{title}</h1>
+        <div className="dropdowns-container">
+          {/* Dropdown to select the joke category */}
+          <div className="dropdown-label">Select Category:</div>
+          <select className="jokes-select" value={selectedCategory} onChange={handleCategoryChange}>
+            {categories.map((category) => (
+              <option key={category} value={category}>
+                {category}
+              </option>
+            ))}
+          </select>
+          {/* Translation dropdown component */}
+          <div className="dropdown-label">Select Language:</div>
+          <Translate joke={joke} onTranslatedJoke={handleTranslatedJoke} />
         </div>
-
         <div>
-          <button className="jokes-button" onClick={fetchNewJoke}>Generate Joke</button>
+          {/* Button to fetch a new joke */}
+          <button className="jokes-button" onClick={fetchNewJoke}>{buttonText}</button>
         </div>
-        <p className="jokes-content">{joke}</p>
+        {/* Display the translated joke, if available */}
+        {translatedJoke && <p className="jokes-content">{translatedJoke}</p>}
       </div>
     </div>
   );

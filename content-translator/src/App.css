@@ -1,5 +1,6 @@
+/* Global styles */
 html {
-  font-family:sans-serif;
+  font-family: sans-serif;
 }
 
 body {
@@ -9,68 +10,46 @@ body {
   height: 100vh;
   margin: 0;
   background: linear-gradient(54deg, #f0f, #0ff);
-  color: #fff; /* Set the text color to white for better visibility */
-
+  color: #fff;
 }
 
-.jokes-title {
-  margin-bottom: 10px;
-  position: relative; /* Add positioning to contain the cursor */
-  background: linear-gradient(54deg, #f0f, #0ff); /* Apply the gradient to the background */
-  -webkit-background-clip: text; /* Apply the gradient as text color (for browser compatibility) */
-  color: transparent; /* Make the text transparent to show the gradient */
-}
-
+/* Jokes Container */
 .jokes-background {
-  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #000; /* Set the background color of the body as black */
+  background-color: #000;
   height: 100%;
   width: 100%;
-  border-radius: 8px; /* Round off the corners */
-  overflow: hidden; /* Hide any content that overflows the rounded corners */
+  border-radius: 8px;
+  overflow: hidden;
 }
 
 .jokes-container {
-  position: relative;
-  max-width: 400px;
-}
-
-.jokes-container {
-  height: 80vh; /* Increase the height of the jokes container */
-  width: 800px; /* Increase the width of the jokes container */
+  height: 80vh;
+  width: 650px;
   padding: 20px;
-  border: 2px solid #ccc;
+  border: 5px solid white;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   text-align: center;
+}
+
+/* Title Styles */
+.jokes-title {
+  margin-bottom: 10px;
   position: relative;
+  background: linear-gradient(54deg, #f0f, #0ff);
+  -webkit-background-clip: text;
+  color: transparent;
 }
 
-@keyframes blink {
-  0% { opacity: 1; }
-  50% { opacity: 0; }
-  100% { opacity: 1; }
-}
-
-.cursor {
-  display: inline-block;
-  width: 2px;
-  height: 1em;
-  background-color: #fff; /* Cursor color */
-  animation: blink 1s infinite;
-  position: absolute;
-  left: 0;
-  bottom: -4px;
-}
-
+/* Joke Button Styles */
 .jokes-button {
   margin: 10px;
   padding: 12px 24px;
   font-size: 18px;
-  background: linear-gradient(54deg, #f0f, #0ff); 
+  background: linear-gradient(54deg, #f0f, #0ff);
   color: white;
   border: none;
   border-radius: 24px;
@@ -83,10 +62,26 @@ body {
   background: linear-gradient(54deg, #e0e, #0ef);
 }
 
-.jokes-button:active {
-  transform: scale(0.95);
+/* Dropdowns Styles */
+.dropdowns-container {
+  margin-top: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
 }
-/* Styles for the dropdown menu */
+
+/* Dropdown Styles */
+.dropdown-container {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.dropdown-label {
+  font-weight: bold;
+}
+
 .jokes-select {
   padding: 8px 12px;
   font-size: 16px;
@@ -94,15 +89,16 @@ body {
   border-radius: 4px;
   outline: none;
   margin-bottom: 10px;
-  appearance: none; /* Remove default appearance */
-  background-color: #fff;
-  color: #333;
+  appearance: none;
+  background-color: white;
+  border-width: 5px;
+  color: black;
+  font-weight: bold;
   cursor: pointer;
 }
 
-/* Custom arrow for the dropdown */
 .jokes-select::after {
-  content: '\25BC'; /* Downward pointing triangle (Unicode) */
+  content: '\25BC';
   position: absolute;
   right: 12px;
   top: 50%;
@@ -110,25 +106,59 @@ body {
   pointer-events: none;
 }
 
-/* Styles for the dropdown options */
 .jokes-select option {
   padding: 8px;
 }
 
-/* Styles for the selected option */
 .jokes-select option:checked {
   background-color: #0ff;
-  color: #fff;
+  color: black;
 }
 
 /* Hide default dropdown arrow on Chrome/Safari */
-@media screen and (-webkit-min-device-pixel-ratio:0) {
-  .jokes-select {
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+  .jokes-select,
+  .language-select {
     -webkit-appearance: none;
   }
 }
 
-.laugh{
-  font-size: 100px;
+/* Laugh Styles */
+.laugh {
+  font-size: 120px;
 }
 
+/* Language Select Styles */
+.language-select {
+  padding: 8px 12px;
+  font-size: 16px;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  outline: none;
+  margin-bottom: 10px;
+  appearance: none;
+  background-color: #fff;
+  color: #333;
+  border-width: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  width: 200px;
+}
+
+.language-select::after {
+  content: '\25BC';
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.language-select option {
+  padding: 8px;
+}
+
+.language-select option:checked {
+  background-color: #0ff;
+  color: black;
+}
