@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/International-Jokes/static/css/main.90a68ae4.css",
-    "main.js": "/International-Jokes/static/js/main.307a1fdc.js",
+    "main.js": "/International-Jokes/static/js/main.15d106ae.js",
     "static/js/787.7e9ef06b.chunk.js": "/International-Jokes/static/js/787.7e9ef06b.chunk.js",
     "index.html": "/International-Jokes/index.html",
     "main.90a68ae4.css.map": "/International-Jokes/static/css/main.90a68ae4.css.map",
-    "main.307a1fdc.js.map": "/International-Jokes/static/js/main.307a1fdc.js.map",
+    "main.15d106ae.js.map": "/International-Jokes/static/js/main.15d106ae.js.map",
     "787.7e9ef06b.chunk.js.map": "/International-Jokes/static/js/787.7e9ef06b.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.90a68ae4.css",
-    "static/js/main.307a1fdc.js"
+    "static/js/main.15d106ae.js"
   ]
 }
