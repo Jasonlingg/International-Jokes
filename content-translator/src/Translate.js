@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import toast, { Toaster } from 'react-hot-toast';
+
 
 /**
  * Translate Component
@@ -11,7 +13,8 @@ export default function Translate({ joke, onTranslatedJoke }) {
   const [selectedLanguageKey, setLanguageKey] = useState('');
   const [languagesList, setLanguagesList] = useState([]);
   const [translatedJoke, setTranslatedJoke] = useState('');
-
+  const notifyError = () => toast.error("Too many funny jokes. Wait a minute please.");
+  const notifySuccess = () => toast.success('Translated!')
   // Fetch the list of supported languages from the libretranslate.de API.
   useEffect(() => {
     axios.get(`https://libretranslate.de/languages`)
@@ -49,15 +52,17 @@ export default function Translate({ joke, onTranslatedJoke }) {
         source: 'en',
         target: selectedLanguageKey,
       };
-
       axios.post(`https://libretranslate.de/translate`, data)
         .then((response) => {
           setTranslatedJoke(response.data.translatedText);
           onTranslatedJoke(response.data.translatedText);
+          notifySuccess();
         })
         .catch((error) => {
+          notifyError();
           console.error('Translation Error:', error);
         });
+        
     }
   };
 
@@ -72,6 +77,7 @@ export default function Translate({ joke, onTranslatedJoke }) {
           </option>
         ))}
       </select>
+      <Toaster />
     </div>
   );
 }

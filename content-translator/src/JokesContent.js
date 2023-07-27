@@ -2,6 +2,10 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Translate from './Translate'; // Import the Translate component
 import './App.css';
+import toast, { Toaster } from 'react-hot-toast';
+
+
+
 
 /**
  * JokesContent Component
@@ -12,7 +16,7 @@ function JokesContent() {
   const titleText = "Joke Generator";
   const typingSpeed = 100;
   const [translatedJoke, setTranslatedJoke] = useState('');
-
+  const notify = () => toast('Here is your toast.');
   // Callback function to handle the translated joke from the Translate component
   const handleTranslatedJoke = (translatedJoke) => {
     setTranslatedJoke(translatedJoke);
