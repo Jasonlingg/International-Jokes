@@ -21,6 +21,7 @@ To run and install this application, follow these steps:
 ```bash
 npm install
 npm install axios
+npm install react-hot-toast
 ```
 
 5. Run the application:
