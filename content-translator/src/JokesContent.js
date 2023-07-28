@@ -5,8 +5,6 @@ import './App.css';
 import toast, { Toaster } from 'react-hot-toast';
 
 
-
-
 /**
  * JokesContent Component
  * A component to display jokes and allow translation of jokes to different languages.
@@ -16,7 +14,10 @@ function JokesContent() {
   const titleText = "Joke Generator";
   const typingSpeed = 100;
   const [translatedJoke, setTranslatedJoke] = useState('');
-  const notify = () => toast('Here is your toast.');
+  const [joke, setJoke] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState('Any');
+  const categories = ['Any', 'Misc', 'Programming', 'Dark', 'Pun'];
+
   // Callback function to handle the translated joke from the Translate component
   const handleTranslatedJoke = (translatedJoke) => {
     setTranslatedJoke(translatedJoke);
@@ -48,9 +49,7 @@ function JokesContent() {
     }
   };
 
-  const [joke, setJoke] = useState('');
-  const [selectedCategory, setSelectedCategory] = useState('Any');
-  const categories = ['Any', 'Misc', 'Programming', 'Dark', 'Pun'];
+
 
   // Event handler for changing the selected category
   const handleCategoryChange = (event) => {
@@ -66,9 +65,7 @@ function JokesContent() {
       setTranslatedJoke('');
     }
   };
-
-  const buttonText = "Generate Joke";
-
+  
   return (
     <div className="jokes-background">
       <div className="jokes-container">
@@ -92,7 +89,7 @@ function JokesContent() {
         </div>
         <div>
           {/* Button to fetch a new joke */}
-          <button className="jokes-button" onClick={fetchNewJoke}>{buttonText}</button>
+          <button className="jokes-button" onClick={fetchNewJoke}>Generate Joke</button>
         </div>
         {/* Display the translated joke, if available */}
         {translatedJoke && <p className="jokes-content">{translatedJoke}</p>}
